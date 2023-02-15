@@ -11,7 +11,6 @@ const secondsField = document.querySelector('[data-seconds]');
 
 startBtn.disabled = true;
 let selectedDate = null;
-let timerId = null;
 
 const options = {
   enableTime: true,
@@ -49,7 +48,7 @@ function changeFieldValue(timeLeft) {
 
 // Функція запуску таймера
 function onStartTiming() {
-  timerId = setInterval(() => {
+  let timerId = setInterval(() => {
     const remainingTime = selectedDate - Date.now();
     changeFieldValue(remainingTime);
     if (remainingTime <= 0) {
