@@ -49,5 +49,5 @@ function createPromise(position, delay) {
   });
 }
 
-// Слухач події
+// Hendler
 form.addEventListener('submit', onFormSubmit);

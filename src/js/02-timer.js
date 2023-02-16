@@ -9,7 +9,8 @@ const hoursField = document.querySelector('[data-hours]');
 const minutesField = document.querySelector('[data-minutes]');
 const secondsField = document.querySelector('[data-seconds]');
 
-startBtn.disabled = true;
+changeBtnState(true);
+// startBtn.disabled = true;
 let selectedDate = null;
 
 const options = {
@@ -24,7 +25,8 @@ const options = {
       Notify.failure('Please choose a date in the future');
       return;
     }
-    startBtn.disabled = false;
+    changeBtnState(false);
+    // startBtn.disabled = false;
   },
 };
 
@@ -32,6 +34,11 @@ const options = {
 flatpickr(inputRef, options);
 
 // --------------------------------------------------------------------------- //
+
+// Функція зміни стану кнопки
+function changeBtnState(isActive) {
+  startBtn.disabled = isActive;
+}
 
 // Функція для додавання нулів перед значеннями
 function addLeadingZero(value) {
@@ -48,6 +55,8 @@ function changeFieldValue(timeLeft) {
 
 // Функція запуску таймера
 function onStartTiming() {
+  changeBtnState(true);
+  // startBtn.disabled = true;
   let timerId = setInterval(() => {
     const remainingTime = selectedDate - Date.now();
     changeFieldValue(remainingTime);
@@ -57,6 +66,8 @@ function onStartTiming() {
       hoursField.textContent = '00';
       minutesField.textContent = '00';
       secondsField.textContent = '00';
+      // startBtn.disabled = false;
+      changeBtnState(false);
     }
   }, 1000);
 }
