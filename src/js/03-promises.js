@@ -29,7 +29,8 @@ function generatePromises({ amount, step, delay } = {}) {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
-      });
+      })
+      .finally(() => form.reset());
     delay += step;
   }
 }
