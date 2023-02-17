@@ -7,12 +7,16 @@ stopBtn.disabled = true;
 // Функція для зміни атрибута на кнопці
 function changeBtnAttribute() {
   if (!startBtn.disabled) {
-    startBtn.disabled = true;
-    stopBtn.disabled = false;
+    onChangeDisabled(true, false);
   } else {
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
+    onChangeDisabled(false, true);
   }
+}
+
+// Функція зміни стану кнопки
+function onChangeDisabled(startState, endState) {
+  startBtn.disabled = startState;
+  stopBtn.disabled = endState;
 }
 
 // Функція зміни кольору

@@ -10,7 +10,6 @@ const minutesField = document.querySelector('[data-minutes]');
 const secondsField = document.querySelector('[data-seconds]');
 
 changeBtnState(true);
-// startBtn.disabled = true;
 let selectedDate = null;
 
 const options = {
@@ -26,7 +25,6 @@ const options = {
       return;
     }
     changeBtnState(false);
-    // startBtn.disabled = false;
   },
 };
 
@@ -46,27 +44,24 @@ function addLeadingZero(value) {
 }
 
 // Функція для зміни значень в елементах
-function changeFieldValue(timeLeft) {
-  daysField.textContent = addLeadingZero(convertMs(timeLeft).days);
-  hoursField.textContent = addLeadingZero(convertMs(timeLeft).hours);
-  minutesField.textContent = addLeadingZero(convertMs(timeLeft).minutes);
-  secondsField.textContent = addLeadingZero(convertMs(timeLeft).seconds);
+function changeFieldValue(timeLeft = null) {
+  daysField.textContent = addLeadingZero(convertMs(timeLeft).days) ?? '00';
+  hoursField.textContent = addLeadingZero(convertMs(timeLeft).hours) ?? '00';
+  minutesField.textContent =
+    addLeadingZero(convertMs(timeLeft)?.minutes) ?? '00';
+  secondsField.textContent =
+    addLeadingZero(convertMs(timeLeft)?.seconds) ?? '00';
 }
 
 // Функція запуску таймера
 function onStartTiming() {
   changeBtnState(true);
-  // startBtn.disabled = true;
+
   let timerId = setInterval(() => {
     const remainingTime = selectedDate - Date.now();
     changeFieldValue(remainingTime);
     if (remainingTime <= 0) {
-      clearInterval(timerId);
-      daysField.textContent = '00';
-      hoursField.textContent = '00';
-      minutesField.textContent = '00';
-      secondsField.textContent = '00';
-      // startBtn.disabled = false;
+      changeFieldValue();
       changeBtnState(false);
     }
   }, 1000);
