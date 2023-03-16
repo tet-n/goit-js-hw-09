@@ -1,21 +1,21 @@
 {
-  "name": "goit-js-hw-09",
+  "name": "goit",
   "version": "2.0.0",
   "description": "",
   "homepage": "https://tet-n.github.io/goit-js-hw-09",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-09.git/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-09/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tet/goit-js-hw-09.git"
+    "url": "git+https://github.com/tet/parcel-project-template.git"
   },
   "keywords": [],
   "author": "Tetiana Nivchyk <tata.02od@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tet-n/goit-js-hw-09/issues"
+    "url": "https://github.com/tn/goit-js-hw-09/issues"
   },
   "dependencies": {
     "flatpickr": "^4.6.13",
